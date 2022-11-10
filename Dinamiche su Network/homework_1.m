@@ -44,7 +44,6 @@ invariantDistributionCentrality = ((1 / sum(eigenvectorP)) * eigenvectorP); % no
 beta = 0.15;
 mu = ones(length(W), 1);
 katzCentrality = zeros(length(W), 1);
-i = 0;
 while true
     oldCentrality = katzCentrality;
     katzCentrality = ((( (1 - beta) / lambdaW) * transpose(W)) * katzCentrality) + (beta * mu);
