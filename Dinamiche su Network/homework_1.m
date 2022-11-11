@@ -29,8 +29,8 @@ degreeCentrality = degrees;
 lambdaW = max(eigenvalues, [], 'all');
 [eigenvectors, eigenvalues] = eig((1 / lambdaW) * transpose(W));
 eigenvalues = diag(eigenvalues);
-eigenvector = eigenvectors(:, eigenvalues == max(eigenvalues, [], 'all')); % prendo l'autovettore di autovalore 1
-eigenvectorCentrality = ((1 / sum(eigenvector)) * eigenvector); % normalizzo rispetto alla somma
+eigenvector = eigenvectors(:, eigenvalues == max(eigenvalues, [], 'all')); % eigenvector with lambda=1
+eigenvectorCentrality = ((1 / sum(eigenvector)) * eigenvector); % normalize: 1 / sum(eigenvec elements)
 
 % INVARIANT DISTRIBUTION CENTRALITY
 D = diag(degrees);
@@ -38,7 +38,7 @@ P = D^(-1) * W;
 [eigenvectorsP, eigenvaluesP] = eig(transpose(P));
 eigenvaluesP = diag(eigenvaluesP);
 eigenvectorP = eigenvectorsP(:, eigenvaluesP == max(eigenvaluesP, [], 'all')); % eigenvector with lambda=1
-invariantDistributionCentrality = ((1 / sum(eigenvectorP)) * eigenvectorP); % normalizzo rispetto alla somma
+invariantDistributionCentrality = ((1 / sum(eigenvectorP)) * eigenvectorP); % normalize: 1 / sum(eigenvec elements)
 
 % KATZ CENTRALITY
 % Check: (eye(14) - (((1 - beta) / lambdaW) * transpose(W)) )^(-1) * (beta * mu)
