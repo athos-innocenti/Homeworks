@@ -13,7 +13,7 @@ W = [0,1,1,1,1,1,0,0,0,0,0,0,0,0; ...
      0,0,0,0,0,0,0,0,1,0,0,0,0,0; ...
      0,0,0,0,0,0,0,0,1,0,0,0,0,0];
 G = graph(W);
-%plot(G);
+plot(G);
 
 % DEGREE CENTRALITY
 % Check: centrality(G, 'degree', 'Importance', G.Edges.Weight)
@@ -41,6 +41,7 @@ eigenvectorP = eigenvectorsP(:, eigenvaluesP == max(eigenvaluesP, [], 'all')); %
 invariantDistributionCentrality = ((1 / sum(eigenvectorP)) * eigenvectorP); % normalizzo rispetto alla somma
 
 % KATZ CENTRALITY
+% Check: (eye(14) - (((1 - beta) / lambdaW) * transpose(W)) )^(-1) * (beta * mu)
 beta = 0.15;
 mu = ones(length(W), 1);
 katzCentrality = zeros(length(W), 1);
